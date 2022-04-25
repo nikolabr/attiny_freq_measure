@@ -20,6 +20,8 @@ void setup(void)
   MCUCR |= (1<<ISC00);	  // Configure as rising edge
 
   initTimerCounter1();	  // Initialize timer
+/* IMPORTANT NOTE: baud rate is tied to CPU frequency! The software serial library assumes 1MHz, so if the CPU is running at 
+	8 or 16MHz, the baud rate will be 8 or 16 times smaller! */
   serial.begin(9600);
   serial.println("ready");
 }
